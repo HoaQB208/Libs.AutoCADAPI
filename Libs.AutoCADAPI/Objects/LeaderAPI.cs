@@ -3,30 +3,33 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using System.Collections.Generic;
 
-public class LeaderAPI
+namespace Libs.AutoCADAPI.Objects
 {
-    public static void Create(List<Point3d> points, double arrowSize, ObjectId mTextId)
+    public class LeaderAPI
     {
-        Document doc = Application.DocumentManager.MdiActiveDocument;
-        Database db = doc.Database;
-        using (doc.LockDocument())
-        using (Transaction tr = db.TransactionManager.StartTransaction())
+        public static void Create(List<Point3d> points, double arrowSize, ObjectId mTextId)
         {
-            BlockTableRecord rec = tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite) as BlockTableRecord;
-            Leader leader = new Leader
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            using (doc.LockDocument())
+            using (Transaction tr = db.TransactionManager.StartTransaction())
             {
-                HasArrowHead = true,
-                Dimasz = arrowSize,
-                Dimtad = 0 // Centered
-            };
-            if (mTextId != ObjectId.Null) leader.Annotation = mTextId;
-            foreach (Point3d pt in points) leader.AppendVertex(pt);
-            leader.SetDatabaseDefaults();
-            leader.EvaluateLeader();
-            rec.AppendEntity(leader);
-            tr.AddNewlyCreatedDBObject(leader, true);
-            tr.Commit();
+                BlockTableRecord rec = tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite) as BlockTableRecord;
+                Leader leader = new Leader
+                {
+                    HasArrowHead = true,
+                    Dimasz = arrowSize,
+                    Dimtad = 0 // Centered
+                };
+                if (mTextId != ObjectId.Null) leader.Annotation = mTextId;
+                foreach (Point3d pt in points) leader.AppendVertex(pt);
+                leader.SetDatabaseDefaults();
+                leader.EvaluateLeader();
+                rec.AppendEntity(leader);
+                tr.AddNewlyCreatedDBObject(leader, true);
+                tr.Commit();
+            }
         }
-    }
 
+    }
 }

@@ -1,11 +1,14 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 
-public class LayoutAPI
+namespace Libs.AutoCADAPI.Objects
 {
-    public static ObjectId Create(string layoutName, bool makeCurrent = true)
+    public class LayoutAPI
     {
-        ObjectId layoutId = LayoutManager.Current.CreateLayout(layoutName);
-        if (makeCurrent) LayoutManager.Current.CurrentLayout = layoutName;
-        return layoutId;
+        public static ObjectId Create(string layoutName, bool makeCurrent = true)
+        {
+            ObjectId layoutId = LayoutManager.Current.CreateLayout(layoutName);
+            if (makeCurrent) LayoutManager.Current.CurrentLayout = layoutName;
+            return layoutId;
+        }
     }
 }

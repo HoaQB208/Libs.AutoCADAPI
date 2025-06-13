@@ -2,36 +2,39 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using System.Collections.Generic;
 
-public class ImportAPI
+namespace Libs.AutoCADAPI.Objects
 {
-    public static string Blocks(string pathSourceDwg, List<string> blockNames)
+    public class ImportAPI
     {
-        string error = "";
-        try
+        public static string Blocks(string pathSourceDwg, List<string> blockNames)
         {
-            Database sourceDb = new Database(false, true);
-            sourceDb.ReadDwgFile(pathSourceDwg, FileOpenMode.OpenTryForReadShare, true, "");
-            ObjectIdCollection blockIds = new ObjectIdCollection();
-            using (Transaction tr = sourceDb.TransactionManager.StartTransaction())
+            string error = "";
+            try
             {
-                BlockTable tb = tr.GetObject(sourceDb.BlockTableId, OpenMode.ForRead) as BlockTable;
-                foreach (string blockName in blockNames)
+                Database sourceDb = new Database(false, true);
+                sourceDb.ReadDwgFile(pathSourceDwg, FileOpenMode.OpenTryForReadShare, true, "");
+                ObjectIdCollection blockIds = new ObjectIdCollection();
+                using (Transaction tr = sourceDb.TransactionManager.StartTransaction())
                 {
-                    if (tb.Has(blockName))
+                    BlockTable tb = tr.GetObject(sourceDb.BlockTableId, OpenMode.ForRead) as BlockTable;
+                    foreach (string blockName in blockNames)
                     {
-                        BlockTableRecord rec = tr.GetObject(tb[blockName], OpenMode.ForRead) as BlockTableRecord;
-                        blockIds.Add(rec.ObjectId);
+                        if (tb.Has(blockName))
+                        {
+                            BlockTableRecord rec = tr.GetObject(tb[blockName], OpenMode.ForRead) as BlockTableRecord;
+                            blockIds.Add(rec.ObjectId);
+                        }
                     }
                 }
+                Database currentDb = Application.DocumentManager.MdiActiveDocument.Database;
+                currentDb.WblockCloneObjects(blockIds, currentDb.CurrentSpaceId, new IdMapping(), DuplicateRecordCloning.Replace, false);
+                sourceDb.Dispose();
             }
-            Database currentDb = Application.DocumentManager.MdiActiveDocument.Database;
-            currentDb.WblockCloneObjects(blockIds, currentDb.CurrentSpaceId, new IdMapping(), DuplicateRecordCloning.Replace, false);
-            sourceDb.Dispose();
+            catch (System.Exception ex)
+            {
+                error = ex.Message;
+            }
+            return error;
         }
-        catch (System.Exception ex)
-        {
-            error = ex.Message;
-        }
-        return error;
     }
 }

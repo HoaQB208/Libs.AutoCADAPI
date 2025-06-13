@@ -1,6 +1,6 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 
-namespace BIMZone.AutoCAD_API._Objects
+namespace Libs.AutoCADAPI.Objects
 {
     public class EditorAPI
     {

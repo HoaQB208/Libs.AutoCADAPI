@@ -3,136 +3,140 @@ using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.DatabaseServices.Filters;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
+using Libs.AutoCADAPI.Objects;
 using System;
 using System.Collections.Generic;
 
-public class SelectionAPI
+namespace Libs.AutoCADAPI.Selection
 {
-    public static List<Entity> Entities(SelectionType selectionType, SelectionFilter filter = null, string msg = "Select object", Point3dCollection polygon = null, Point3d? pWindow1 = null, Point3d? pWindow2 = null, Point3d? selectAtPoint = null, double toleranceFromPoint = 0.1)
+    public class SelectionAPI
     {
-        List<ObjectId> ids = ObjectIds(selectionType, filter, msg, polygon, pWindow1, pWindow2, selectAtPoint, toleranceFromPoint);
-        return EntityAPI.GetEntities(ids);
-    }
-
-    public static List<ObjectId> ObjectIds(SelectionType selectionType, SelectionFilter filter = null, string msg = "Select object", Point3dCollection polygon = null, Point3d? pWindow1 = null, Point3d? pWindow2 = null, Point3d? selectAtPoint = null, double toleranceFromPoint = 0.1)
-    {
-        SelectionSet set = GetSelectionSet(selectionType, filter, msg, polygon, pWindow1, pWindow2, selectAtPoint, toleranceFromPoint);
-        return ObjectIds(set);
-    }
-
-    public static Entity Entity(string msg = "Pick object", List<Type> allowedClasss = null)
-    {
-        Entity entity = null;
-        ObjectId id = PickObject(msg, allowedClasss);
-        if (id != ObjectId.Null)
+        public static List<Entity> Entities(SelectionType selectionType, SelectionFilter filter = null, string msg = "Select object", Point3dCollection polygon = null, Point3d? pWindow1 = null, Point3d? pWindow2 = null, Point3d? selectAtPoint = null, double toleranceFromPoint = 0.1)
         {
-            entity = EntityAPI.GetEntity(id);
+            List<ObjectId> ids = ObjectIds(selectionType, filter, msg, polygon, pWindow1, pWindow2, selectAtPoint, toleranceFromPoint);
+            return EntityAPI.GetEntities(ids);
         }
-        return entity;
-    }
 
-    public static List<ObjectId> ObjectIds(SelectionSet set)
-    {
-        List<ObjectId> ids = new List<ObjectId>();
-        if (set != null)
+        public static List<ObjectId> ObjectIds(SelectionType selectionType, SelectionFilter filter = null, string msg = "Select object", Point3dCollection polygon = null, Point3d? pWindow1 = null, Point3d? pWindow2 = null, Point3d? selectAtPoint = null, double toleranceFromPoint = 0.1)
         {
-            foreach (SelectedObject obj in set)
+            SelectionSet set = GetSelectionSet(selectionType, filter, msg, polygon, pWindow1, pWindow2, selectAtPoint, toleranceFromPoint);
+            return ObjectIds(set);
+        }
+
+        public static Entity Entity(string msg = "Pick object", List<Type> allowedClasss = null)
+        {
+            Entity entity = null;
+            ObjectId id = PickObject(msg, allowedClasss);
+            if (id != ObjectId.Null)
             {
-                ids.Add(obj.ObjectId);
+                entity = EntityAPI.GetEntity(id);
             }
-        }
-        return ids;
-    }
-
-    public static ObjectId PickObject(string msg = "Pick object", List<Type> allowedClasss = null)
-    {
-        PromptEntityOptions options = new PromptEntityOptions("\n" + msg);
-        options.SetRejectMessage("\n" + msg);
-        if (allowedClasss != null)
-        {
-            foreach (var allowedClass in allowedClasss) options.AddAllowedClass(allowedClass, true);
+            return entity;
         }
 
-        Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
-        PromptEntityResult res = editor.GetEntity(options);
-        if (res.Status == PromptStatus.OK) return res.ObjectId;
-        else return ObjectId.Null;
-    }
-
-    public static Point3d? PickPoint(string msg = "Click chọn điểm")
-    {
-        PromptPointResult res = Application.DocumentManager.MdiActiveDocument.Editor.GetPoint(new PromptPointOptions("\n" + msg));
-        if (res.Status == PromptStatus.OK) return res.Value;
-        return null;
-    }
-
-    public static ObjectId EntityInBlock(out Matrix3d transform, string msg = "Pick object in block")
-    {
-        ObjectId id = ObjectId.Null;
-        transform = Matrix3d.Identity;
-
-        Document doc = Application.DocumentManager.MdiActiveDocument;
-        using (Transaction tr = doc.TransactionManager.StartOpenCloseTransaction())
+        public static List<ObjectId> ObjectIds(SelectionSet set)
         {
-            PromptNestedEntityResult res = doc.Editor.GetNestedEntity("\n" + msg);
-            if (res.Status == PromptStatus.OK)
+            List<ObjectId> ids = new List<ObjectId>();
+            if (set != null)
             {
-                id = res.ObjectId;
-                transform = res.Transform;
-            }
-        }
-
-        return id;
-    }
-
-    private static SelectionSet GetSelectionSet(SelectionType selectionType, SelectionFilter filter, string msg, Point3dCollection polygon, Point3d? pWindow1, Point3d? pWindow2, Point3d? selectAtPoint, double toleranceFromPoint = 0.1)
-    {
-        Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
-        SelectionSet selectionSet = null;
-        switch (selectionType)
-        {
-            case SelectionType.GetSelection:
-                PromptSelectionOptions opts = new PromptSelectionOptions { MessageForAdding = "\n" + msg };
-                selectionSet = editor.GetSelection(opts, filter).Value;
-                break;
-            case SelectionType.InsidePolygon:
-                if (polygon != null) selectionSet = editor.SelectWindowPolygon(polygon, filter).Value;
-                break;
-            case SelectionType.CrossingPolygon:
-                if (polygon != null) selectionSet = editor.SelectCrossingPolygon(polygon, filter).Value;
-                break;
-            case SelectionType.InsideWindow:
-                if (pWindow1 != null & pWindow2 != null) selectionSet = editor.SelectWindow(pWindow1.Value, pWindow2.Value, filter).Value;
-                break;
-            case SelectionType.CrossingWindow:
-                if (pWindow1 != null & pWindow2 != null) selectionSet = editor.SelectCrossingWindow(pWindow1.Value, pWindow2.Value, filter).Value;
-                break;
-            case SelectionType.SelectAtPoint:
-                if (selectAtPoint != null)
+                foreach (SelectedObject obj in set)
                 {
-                    Point3dCollection collection = PointAPI.Rectangle(selectAtPoint.Value, toleranceFromPoint, toleranceFromPoint);
-                    selectionSet = editor.SelectCrossingPolygon(collection, filter).Value;
+                    ids.Add(obj.ObjectId);
                 }
-                break;
-            case SelectionType.All:
-                selectionSet = editor.SelectAll(filter).Value;
-                break;
-        }
-        return selectionSet;
-    }
-
-    public static List<Point3d> GetPointsFromEntities(List<Entity> entities)
-    {
-        List<Point3d> points = new List<Point3d>();
-
-        foreach (Entity ent in entities)
-        {
-            if (ent is BlockReference bl) points.Add(bl.Position);
-            else if (ent is Polyline pl)
-            {
-                for (int i = 0; i < pl.NumberOfVertices; i++) points.Add(pl.GetPoint3dAt(i));
             }
+            return ids;
         }
-        return points;
+
+        public static ObjectId PickObject(string msg = "Pick object", List<Type> allowedClasss = null)
+        {
+            PromptEntityOptions options = new PromptEntityOptions("\n" + msg);
+            options.SetRejectMessage("\n" + msg);
+            if (allowedClasss != null)
+            {
+                foreach (var allowedClass in allowedClasss) options.AddAllowedClass(allowedClass, true);
+            }
+
+            Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
+            PromptEntityResult res = editor.GetEntity(options);
+            if (res.Status == PromptStatus.OK) return res.ObjectId;
+            else return ObjectId.Null;
+        }
+
+        public static Point3d? PickPoint(string msg = "Click chọn điểm")
+        {
+            PromptPointResult res = Application.DocumentManager.MdiActiveDocument.Editor.GetPoint(new PromptPointOptions("\n" + msg));
+            if (res.Status == PromptStatus.OK) return res.Value;
+            return null;
+        }
+
+        public static ObjectId EntityInBlock(out Matrix3d transform, string msg = "Pick object in block")
+        {
+            ObjectId id = ObjectId.Null;
+            transform = Matrix3d.Identity;
+
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            using (Transaction tr = doc.TransactionManager.StartOpenCloseTransaction())
+            {
+                PromptNestedEntityResult res = doc.Editor.GetNestedEntity("\n" + msg);
+                if (res.Status == PromptStatus.OK)
+                {
+                    id = res.ObjectId;
+                    transform = res.Transform;
+                }
+            }
+
+            return id;
+        }
+
+        private static SelectionSet GetSelectionSet(SelectionType selectionType, SelectionFilter filter, string msg, Point3dCollection polygon, Point3d? pWindow1, Point3d? pWindow2, Point3d? selectAtPoint, double toleranceFromPoint = 0.1)
+        {
+            Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
+            SelectionSet selectionSet = null;
+            switch (selectionType)
+            {
+                case SelectionType.GetSelection:
+                    PromptSelectionOptions opts = new PromptSelectionOptions { MessageForAdding = "\n" + msg };
+                    selectionSet = editor.GetSelection(opts, filter).Value;
+                    break;
+                case SelectionType.InsidePolygon:
+                    if (polygon != null) selectionSet = editor.SelectWindowPolygon(polygon, filter).Value;
+                    break;
+                case SelectionType.CrossingPolygon:
+                    if (polygon != null) selectionSet = editor.SelectCrossingPolygon(polygon, filter).Value;
+                    break;
+                case SelectionType.InsideWindow:
+                    if (pWindow1 != null & pWindow2 != null) selectionSet = editor.SelectWindow(pWindow1.Value, pWindow2.Value, filter).Value;
+                    break;
+                case SelectionType.CrossingWindow:
+                    if (pWindow1 != null & pWindow2 != null) selectionSet = editor.SelectCrossingWindow(pWindow1.Value, pWindow2.Value, filter).Value;
+                    break;
+                case SelectionType.SelectAtPoint:
+                    if (selectAtPoint != null)
+                    {
+                        Point3dCollection collection = PointAPI.Rectangle(selectAtPoint.Value, toleranceFromPoint, toleranceFromPoint);
+                        selectionSet = editor.SelectCrossingPolygon(collection, filter).Value;
+                    }
+                    break;
+                case SelectionType.All:
+                    selectionSet = editor.SelectAll(filter).Value;
+                    break;
+            }
+            return selectionSet;
+        }
+
+        public static List<Point3d> GetPointsFromEntities(List<Entity> entities)
+        {
+            List<Point3d> points = new List<Point3d>();
+
+            foreach (Entity ent in entities)
+            {
+                if (ent is BlockReference bl) points.Add(bl.Position);
+                else if (ent is Polyline pl)
+                {
+                    for (int i = 0; i < pl.NumberOfVertices; i++) points.Add(pl.GetPoint3dAt(i));
+                }
+            }
+            return points;
+        }
     }
 }

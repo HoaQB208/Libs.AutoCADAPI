@@ -1,30 +1,33 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 
-public class DocumentAPI
+namespace Libs.AutoCADAPI.Objects
 {
-    public static void Regen()
+    public class DocumentAPI
     {
-        Application.DocumentManager.MdiActiveDocument.Editor.Regen();
-    }
+        public static void Regen()
+        {
+            Application.DocumentManager.MdiActiveDocument.Editor.Regen();
+        }
 
-    public static void SendStringToExecute(string command)
-    {
-        Application.DocumentManager.MdiActiveDocument.SendStringToExecute(command + " ", true, false, true);
-    }
+        public static void SendStringToExecute(string command)
+        {
+            Application.DocumentManager.MdiActiveDocument.SendStringToExecute(command + " ", true, false, true);
+        }
 
-    public static Document GetDocument()
-    {
-        return Application.DocumentManager.MdiActiveDocument;
-    }
+        public static Document GetDocument()
+        {
+            return Application.DocumentManager.MdiActiveDocument;
+        }
 
-    public static Database GetDatabase()
-    {
-        return Application.DocumentManager.MdiActiveDocument.Database;
-    }
+        public static Database GetDatabase()
+        {
+            return Application.DocumentManager.MdiActiveDocument.Database;
+        }
 
-    public static Transaction GetTransaction()
-    {
-        return Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction();
+        public static Transaction GetTransaction()
+        {
+            return Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction();
+        }
     }
 }

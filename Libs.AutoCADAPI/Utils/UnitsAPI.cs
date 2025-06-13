@@ -1,6 +1,8 @@
 ﻿using System;
 
-public class UnitsAPI
+namespace Libs.AutoCADAPI.Utils
+{
+    public class UnitsAPI
 {
     public static double RadianToDegrees(double radian)
     {
@@ -11,4 +13,5 @@ public class UnitsAPI
     {
         return degrees * Math.PI / 180;
     }
+}
 }

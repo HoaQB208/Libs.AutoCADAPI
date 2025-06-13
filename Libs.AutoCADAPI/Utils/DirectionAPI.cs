@@ -1,7 +1,9 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 using System;
 
-public class DirectionAPI
+namespace Libs.AutoCADAPI.Utils
+{
+    public class DirectionAPI
 {
     public static bool IsHorizontal(Line line, double angleDegreesTolerance)
     {
@@ -20,4 +22,5 @@ public class DirectionAPI
         double angle = UnitsAPI.RadianToDegrees(phandu);
         return angle <= angleDegreesTolerance;
     }
+}
 }

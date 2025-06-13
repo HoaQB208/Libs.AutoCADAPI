@@ -1,7 +1,9 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 
-public class DrawOrderAPI
+namespace Libs.AutoCADAPI.Utils
+{
+    public class DrawOrderAPI
 {
     static public void BringToFront(ObjectIdCollection ids)
     {
@@ -65,4 +67,5 @@ public class DrawOrderAPI
         SendToBelow,
         BringToAbove
     }
+}
 }
