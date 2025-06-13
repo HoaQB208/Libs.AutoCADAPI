@@ -1,537 +1,621 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96FC5765-4C58-48B9-9034-999C0B246CDB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>BIMZone.AutoCAD_API</RootNamespace>
-    <AssemblyName>BIMZone.AutoCAD_API</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>A2007;A2008;A2009;A2010;A2011;A2012;A2013;A2014;A2015;A2016;A2017;A2018;A2019;A2020;A2021;A2022;A2023;A2024;A2025;A2026;A2027;A2028;A2029;A2030</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2007'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2007</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2007\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2008'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2008</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2008\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2009'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2009</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2009\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2007|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2007\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2010'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2010</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2010\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2008|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2008\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2011'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2011</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2011\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2009|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2009\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2012'">
+    <TargetFramework>net35</TargetFramework>
+    <DefineConstants>A2012</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2012\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2010|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2010\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2013'">
+    <TargetFramework>net40</TargetFramework>
+    <DefineConstants>A2013</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2013\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2011|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2011\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2014'">
+    <TargetFramework>net40</TargetFramework>
+    <DefineConstants>A2014</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2014\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2012|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2012\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2015'">
+    <TargetFramework>net45</TargetFramework>
+    <DefineConstants>A2015</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2015\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2013|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2013\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2016'">
+    <TargetFramework>net45</TargetFramework>
+    <DefineConstants>A2016</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2016\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2014|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2014\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2017'">
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>A2017</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2017\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2015|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2015\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2018'">
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>A2018</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2018\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2016|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2016\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2019'">
+    <TargetFramework>net47</TargetFramework>
+    <DefineConstants>A2019</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2019\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2017|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2017\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2020'">
+    <TargetFramework>net472</TargetFramework>
+    <DefineConstants>A2020</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2020\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2018|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2018\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2021'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2021</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2021\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2019|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2019\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2022'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2022</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2022\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2020|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2020\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2023'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2023</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2023\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2021|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2021\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2024'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2024</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2024\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2022|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2022\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2025'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2025</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2025\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2023|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2023\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2026'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2026</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2026\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '2024|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\2024\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2027'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2027</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2027\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2028'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2028</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2028\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2029'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2029</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2029\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2030'">
+    <TargetFramework>net48</TargetFramework>
+    <DefineConstants>A2030</DefineConstants>
+    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2030\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2009'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2009\accoremgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2007' ">
+      <HintPath>$(SolutionDir)References\2007\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2009'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2009\acdbmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2007' ">
+      <HintPath>$(SolutionDir)References\2007\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2009'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2009\acmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2008' ">
+      <HintPath>$(SolutionDir)References\2008\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2010'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2010\accoremgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2008' ">
+      <HintPath>$(SolutionDir)References\2008\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2010'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2010\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2009' ">
+      <HintPath>$(SolutionDir)References\2009\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2010'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2010\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2009' ">
+      <HintPath>$(SolutionDir)References\2009\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2010'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2010\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2009' ">
+      <HintPath>$(SolutionDir)References\2009\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2011'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2011\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2009' ">
+      <HintPath>$(SolutionDir)References\2009\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2011'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2011\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2010' ">
+      <HintPath>$(SolutionDir)References\2010\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2011'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2011\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2010' ">
+      <HintPath>$(SolutionDir)References\2010\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2011'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2011\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2010' ">
+      <HintPath>$(SolutionDir)References\2010\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2012'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2012\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2010' ">
+      <HintPath>$(SolutionDir)References\2010\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2012'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2012\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2011' ">
+      <HintPath>$(SolutionDir)References\2011\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2012'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2012\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2011' ">
+      <HintPath>$(SolutionDir)References\2011\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2012'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2012\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2011' ">
+      <HintPath>$(SolutionDir)References\2011\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2013'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2013\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2011' ">
+      <HintPath>$(SolutionDir)References\2011\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2013'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2013\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2012' ">
+      <HintPath>$(SolutionDir)References\2012\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2013'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2013\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2012' ">
+      <HintPath>$(SolutionDir)References\2012\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2013'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2013\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2012' ">
+      <HintPath>$(SolutionDir)References\2012\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2014'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2014\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2012' ">
+      <HintPath>$(SolutionDir)References\2012\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2014'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2014\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2013' ">
+      <HintPath>$(SolutionDir)References\2013\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2014'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2014\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2013' ">
+      <HintPath>$(SolutionDir)References\2013\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2014'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2014\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2013' ">
+      <HintPath>$(SolutionDir)References\2013\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2015'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2015\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2013' ">
+      <HintPath>$(SolutionDir)References\2013\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2015'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2015\acdbmgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2013' ">
+      <HintPath>$(SolutionDir)References\2013\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2015'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2015\acmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2014' ">
+      <HintPath>$(SolutionDir)References\2014\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2015'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2015\AdWindows.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2014' ">
+      <HintPath>$(SolutionDir)References\2014\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2016'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2016\accoremgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2014' ">
+      <HintPath>$(SolutionDir)References\2014\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2016'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2016\acdbmgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2014' ">
+      <HintPath>$(SolutionDir)References\2014\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2016'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2016\acmgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2014' ">
+      <HintPath>$(SolutionDir)References\2014\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2016'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2016\AdWindows.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2015' ">
+      <HintPath>$(SolutionDir)References\2015\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2017'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2017\accoremgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2015' ">
+      <HintPath>$(SolutionDir)References\2015\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2017'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2017\acdbmgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2015' ">
+      <HintPath>$(SolutionDir)References\2015\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2017'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2017\acmgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2015' ">
+      <HintPath>$(SolutionDir)References\2015\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2017'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2017\AdWindows.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2015' ">
+      <HintPath>$(SolutionDir)References\2015\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2018'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2018\accoremgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2016' ">
+      <HintPath>$(SolutionDir)References\2016\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2018'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2018\acdbmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2016' ">
+      <HintPath>$(SolutionDir)References\2016\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2018'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2018\acmgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2016' ">
+      <HintPath>$(SolutionDir)References\2016\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2018'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2018\AdWindows.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2016' ">
+      <HintPath>$(SolutionDir)References\2016\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2019'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2019\accoremgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2016' ">
+      <HintPath>$(SolutionDir)References\2016\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2019'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2019\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2017' ">
+      <HintPath>$(SolutionDir)References\2017\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2019'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2019\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2017' ">
+      <HintPath>$(SolutionDir)References\2017\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2019'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2019\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2017' ">
+      <HintPath>$(SolutionDir)References\2017\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2020'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2020\accoremgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2017' ">
+      <HintPath>$(SolutionDir)References\2017\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2020'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2020\acdbmgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2017' ">
+      <HintPath>$(SolutionDir)References\2017\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2020'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2020\acmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2018' ">
+      <HintPath>$(SolutionDir)References\2018\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2020'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2020\AdWindows.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2018' ">
+      <HintPath>$(SolutionDir)References\2018\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2021'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2021\accoremgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2018' ">
+      <HintPath>$(SolutionDir)References\2018\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2021'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2021\acdbmgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2018' ">
+      <HintPath>$(SolutionDir)References\2018\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2021'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2021\acmgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2018' ">
+      <HintPath>$(SolutionDir)References\2018\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2021'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2021\AdWindows.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2019' ">
+      <HintPath>$(SolutionDir)References\2019\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2022'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2022\accoremgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2019' ">
+      <HintPath>$(SolutionDir)References\2019\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2022'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2022\acdbmgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2019' ">
+      <HintPath>$(SolutionDir)References\2019\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2022'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2022\acmgd.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2019' ">
+      <HintPath>$(SolutionDir)References\2019\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2022'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2022\AdWindows.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2019' ">
+      <HintPath>$(SolutionDir)References\2019\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2023'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2023\accoremgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2020' ">
+      <HintPath>$(SolutionDir)References\2020\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2023'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2023\acdbmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2020' ">
+      <HintPath>$(SolutionDir)References\2020\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2023'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2023\acmgd.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2020' ">
+      <HintPath>$(SolutionDir)References\2020\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2023'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2023\AdWindows.dll</HintPath>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2020' ">
+      <HintPath>$(SolutionDir)References\2020\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == '2024'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2024\accoremgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2020' ">
+      <HintPath>$(SolutionDir)References\2020\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == '2024'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2024\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2021' ">
+      <HintPath>$(SolutionDir)References\2021\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == '2024'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2024\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2021' ">
+      <HintPath>$(SolutionDir)References\2021\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AdWindows" Condition="'$(Configuration)' == '2024'">
-      <HintPath>..\..\..\..\..\..\Dropbox\LAP TRINH\VB.NET\Projects\OneLisp\References AutoCAD\2024\AdWindows.dll</HintPath>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2021' ">
+      <HintPath>$(SolutionDir)References\2021\AcWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2021' ">
+      <HintPath>$(SolutionDir)References\2021\AdWindows.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2021' ">
+      <HintPath>$(SolutionDir)References\2021\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2022' ">
+      <HintPath>$(SolutionDir)References\2022\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2022' ">
+      <HintPath>$(SolutionDir)References\2022\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2022' ">
+      <HintPath>$(SolutionDir)References\2022\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2022' ">
+      <HintPath>$(SolutionDir)References\2022\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2022' ">
+      <HintPath>$(SolutionDir)References\2022\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2023' ">
+      <HintPath>$(SolutionDir)References\2023\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2023' ">
+      <HintPath>$(SolutionDir)References\2023\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2023' ">
+      <HintPath>$(SolutionDir)References\2023\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2023' ">
+      <HintPath>$(SolutionDir)References\2023\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2023' ">
+      <HintPath>$(SolutionDir)References\2023\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2024' ">
+      <HintPath>$(SolutionDir)References\2024\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2024' ">
+      <HintPath>$(SolutionDir)References\2024\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2024' ">
+      <HintPath>$(SolutionDir)References\2024\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2024' ">
+      <HintPath>$(SolutionDir)References\2024\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2024' ">
+      <HintPath>$(SolutionDir)References\2024\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2025' ">
+      <HintPath>$(SolutionDir)References\2025\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2025' ">
+      <HintPath>$(SolutionDir)References\2025\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2025' ">
+      <HintPath>$(SolutionDir)References\2025\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2025' ">
+      <HintPath>$(SolutionDir)References\2025\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2025' ">
+      <HintPath>$(SolutionDir)References\2025\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2026' ">
+      <HintPath>$(SolutionDir)References\2026\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2026' ">
+      <HintPath>$(SolutionDir)References\2026\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2026' ">
+      <HintPath>$(SolutionDir)References\2026\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2026' ">
+      <HintPath>$(SolutionDir)References\2026\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2026' ">
+      <HintPath>$(SolutionDir)References\2026\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2027' ">
+      <HintPath>$(SolutionDir)References\2027\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2027' ">
+      <HintPath>$(SolutionDir)References\2027\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2027' ">
+      <HintPath>$(SolutionDir)References\2027\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2027' ">
+      <HintPath>$(SolutionDir)References\2027\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2027' ">
+      <HintPath>$(SolutionDir)References\2027\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2028' ">
+      <HintPath>$(SolutionDir)References\2028\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2028' ">
+      <HintPath>$(SolutionDir)References\2028\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2028' ">
+      <HintPath>$(SolutionDir)References\2028\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2028' ">
+      <HintPath>$(SolutionDir)References\2028\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2028' ">
+      <HintPath>$(SolutionDir)References\2028\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2029' ">
+      <HintPath>$(SolutionDir)References\2029\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2029' ">
+      <HintPath>$(SolutionDir)References\2029\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2029' ">
+      <HintPath>$(SolutionDir)References\2029\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2029' ">
+      <HintPath>$(SolutionDir)References\2029\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2029' ">
+      <HintPath>$(SolutionDir)References\2029\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'A2030' ">
+      <HintPath>$(SolutionDir)References\2030\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'A2030' ">
+      <HintPath>$(SolutionDir)References\2030\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows" Condition="'$(Configuration)' == 'A2030' ">
+      <HintPath>$(SolutionDir)References\2030\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows" Condition="'$(Configuration)' == 'A2030' ">
+      <HintPath>$(SolutionDir)References\2030\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'A2030' ">
+      <HintPath>$(SolutionDir)References\2030\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Sample\CMDSAMPLE.cs" />
-    <Compile Include="_Objects\ArcAPI.cs" />
-    <Compile Include="_Objects\BlockAPI.cs" />
-    <Compile Include="_Objects\CircleAPI.cs" />
-    <Compile Include="_Objects\DimAPI.cs" />
-    <Compile Include="_Objects\DimStyleAPI.cs" />
-    <Compile Include="_Objects\DocumentAPI.cs" />
-    <Compile Include="_Objects\EditorAPI.cs" />
-    <Compile Include="_Objects\EntityAPI.cs" />
-    <Compile Include="_Objects\HatchAPI.cs" />
-    <Compile Include="_Objects\ImportAPI.cs" />
-    <Compile Include="_Objects\LayerAPI.cs" />
-    <Compile Include="_Objects\LayoutAPI.cs" />
-    <Compile Include="_Objects\LeaderAPI.cs" />
-    <Compile Include="_Objects\LineAPI.cs" />
-    <Compile Include="_Objects\LineTypeAPI.cs" />
-    <Compile Include="_Objects\ObjectIdAPI.cs" />
-    <Compile Include="_Objects\PointAPI.cs" />
-    <Compile Include="_Objects\PolylineAPI.cs" />
-    <Compile Include="_Objects\RibbonAPI.cs" />
-    <Compile Include="_Objects\TextAPI.cs" />
-    <Compile Include="_Objects\TextStyleAPI.cs" />
-    <Compile Include="_Objects\ViewportAPI.cs" />
-    <Compile Include="_Objects\WipeoutAPI.cs" />
-    <Compile Include="_Objects\XDataAPI.cs" />
-    <Compile Include="_Objects\XREFAPI.cs" />
-    <Compile Include="_Selection\InputAPI.cs" />
-    <Compile Include="_Selection\SelectionAPI.cs" />
-    <Compile Include="_Selection\SelectionFilterAPI.cs" />
-    <Compile Include="_Utils\AssemblyManager.cs" />
-    <Compile Include="_Utils\DirectionAPI.cs" />
-    <Compile Include="_Utils\DrawOrderAPI.cs" />
-    <Compile Include="_Utils\EnumAPI.cs" />
-    <Compile Include="_Utils\EnumUtils.cs" />
-    <Compile Include="_Utils\FileDialogUtils.cs" />
-    <Compile Include="_Utils\FileUtils.cs" />
-    <Compile Include="_Utils\HighlightEntityInBlock.cs" />
-    <Compile Include="_Utils\IntersectAPI.cs" />
-    <Compile Include="_Utils\Msg.cs" />
-    <Compile Include="_Utils\TransformAPI.cs" />
-    <Compile Include="_Utils\UnitsAPI.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Sample\NETLOAD.lsp" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
