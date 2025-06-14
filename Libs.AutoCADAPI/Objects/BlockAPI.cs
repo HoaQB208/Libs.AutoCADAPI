@@ -11,7 +11,7 @@ namespace Libs.AutoCADAPI.Objects
 {
     public class BlockAPI
     {
-        public static void SetTagValue(BlockReference blAtt, string tagName, string tagValue)
+        public static bool SetTagValue(BlockReference blAtt, string tagName, string tagValue)
         {
             tagName = tagName.ToUpper();
             Document doc = Application.DocumentManager.MdiActiveDocument;
@@ -25,11 +25,12 @@ namespace Libs.AutoCADAPI.Objects
                     if (att.Tag.ToUpper() == tagName)
                     {
                         att.TextString = tagValue;
-                        break;
+                        tr.Commit();
+                        return true;
                     }
                 }
-                tr.Commit();
             }
+            return false;
         }
 
         public static string GetTagValue(BlockReference blAtt, string tagName, bool hasMultiLines = false)
@@ -86,6 +87,31 @@ namespace Libs.AutoCADAPI.Objects
                 }
             }
             return notExist.Count == 0;
+        }
+
+        public static List<Entity> GetEntitiesInBlock(BlockReference blockRef, bool transformToReal = true)
+        {
+            List<Entity> entitíe = new List<Entity>();
+            using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                BlockTableRecord btr = tr.GetObject(blockRef.BlockTableRecord, OpenMode.ForRead) as BlockTableRecord;
+                if (btr == null) return entitíe;
+                foreach (ObjectId id in btr)
+                {
+                    Entity ent = tr.GetObject(id, OpenMode.ForRead) as Entity;
+                    if (ent != null)
+                    {
+                        if (transformToReal)
+                        {
+                            var transformedPoly = ent.Clone() as Entity;
+                            transformedPoly.TransformBy(blockRef.BlockTransform);
+                            entitíe.Add(transformedPoly);
+                        }
+                        else entitíe.Add(ent);
+                    }
+                }
+            }
+            return entitíe;
         }
 
         public static HashSet<string> ListBlockReferences()
@@ -453,7 +479,7 @@ namespace Libs.AutoCADAPI.Objects
                         }
                     }
                 }
-                catch {}
+                catch { }
             }
             return objs;
         }

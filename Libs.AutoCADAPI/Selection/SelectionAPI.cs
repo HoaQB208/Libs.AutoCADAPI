@@ -156,5 +156,24 @@ namespace Libs.AutoCADAPI.Selection
             }
             return blocks;
         }
+
+        public static List<BlockReference> GetAllBlockRefByName(string blockName)
+        {
+            var blockIds = ObjectIds(SelectionType.All, SelectionFilterAPI.ByObjectTypes(new List<ObjectType>() { ObjectType.Block }));
+            List<BlockReference> blocks = new List<BlockReference>();
+            using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                foreach (var id in blockIds)
+                {
+                    var bl = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
+                    string blName = BlockAPI.GetBlockName(bl);
+                    if (blName == blockName)
+                    {
+                        blocks.Add(bl);
+                    }
+                }
+            }
+            return blocks;
+        }
     }
 }

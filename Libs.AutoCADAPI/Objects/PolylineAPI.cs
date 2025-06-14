@@ -81,7 +81,6 @@ namespace Libs.AutoCADAPI.Objects
             }
         }
 
-
         public static void AddVertexAt(ObjectId plineId, int index, Point3d point)
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
@@ -116,6 +115,13 @@ namespace Libs.AutoCADAPI.Objects
             double maxY = lsY.Max();
             double minY = lsY.Min();
             return maxY - minY;
+        }
+
+        public static double Distance(Polyline pline, Point3d point, bool extend = false)
+        {
+            if (pline == null) return double.MaxValue;
+            Point3d closestPoint = pline.GetClosestPointTo(point, extend);
+            return point.DistanceTo(closestPoint);
         }
 
         public static void FilletAll(ObjectId plineId, double radius)

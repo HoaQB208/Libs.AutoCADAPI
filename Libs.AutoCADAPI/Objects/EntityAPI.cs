@@ -21,6 +21,24 @@ namespace Libs.AutoCADAPI.Objects
             }
         }
 
+        public static Entity GetEntity(string handle)
+        {
+            if (string.IsNullOrEmpty(handle)) return null;
+
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            using (doc.LockDocument())
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                var id = ObjectIdAPI.GetObjectId(handle);
+                if (id != ObjectId.Null)
+                {
+                    return tr.GetObject(id, OpenMode.ForRead) as Entity;
+                }
+            }
+            return null;
+        }
+
         public static List<Entity> GetEntities(List<ObjectId> ids)
         {
             List<Entity> entities = new List<Entity>();
