@@ -23,7 +23,6 @@ namespace Libs.AutoCADAPI.Selection
             return new SelectionFilter(new TypedValue[] { new TypedValue((int)DxfCode.Start, string.Join(",", descriptions)) });
         }
 
-
         public static SelectionFilter ByLayer(string layerName)
         {
             return new SelectionFilter(new TypedValue[] { new TypedValue((int)DxfCode.LayerName, layerName) });
@@ -35,10 +34,34 @@ namespace Libs.AutoCADAPI.Selection
             return new SelectionFilter(new TypedValue[] { new TypedValue((int)DxfCode.Start, description), new TypedValue((int)DxfCode.LayerName, layerName) });
         }
 
-        public static SelectionFilter ByBlock(string blockName)
+
+        /// <summary>
+        /// Chú ý: Hàm này không lọc được DynamicBlock
+        /// </summary>
+        /// <param name="blockNames"></param>
+        /// <returns></returns>
+        public static SelectionFilter ByBlocksNames(params string[] blockNames)
         {
-            return new SelectionFilter(new TypedValue[] { new TypedValue((int)DxfCode.BlockName, blockName) });
+            List<TypedValue> filterList = new List<TypedValue>
+            {
+                new TypedValue((int)DxfCode.Start, "INSERT")
+            };
+            if (blockNames.Length == 1)
+            {
+                filterList.Add(new TypedValue((int)DxfCode.BlockName, blockNames[0]));
+            }
+            else if (blockNames.Length > 1)
+            {
+                filterList.Add(new TypedValue((int)DxfCode.Operator, "<OR"));
+                foreach (string name in blockNames)
+                {
+                    filterList.Add(new TypedValue((int)DxfCode.BlockName, name));
+                }
+                filterList.Add(new TypedValue((int)DxfCode.Operator, "OR>"));
+            }
+            return new SelectionFilter(filterList.ToArray());
         }
+
 
         public static SelectionFilter ByXData(string regAppName)
         {

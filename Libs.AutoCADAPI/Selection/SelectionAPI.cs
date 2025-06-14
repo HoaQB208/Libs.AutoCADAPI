@@ -1,6 +1,5 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.DatabaseServices.Filters;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using Libs.AutoCADAPI.Objects;
@@ -137,6 +136,25 @@ namespace Libs.AutoCADAPI.Selection
                 }
             }
             return points;
+        }
+
+        public static List<BlockReference> GetBlockRefByNames(List<string> blockNames, string msg = "Quét chọn các block")
+        {
+            var blockIds = ObjectIds(SelectionType.GetSelection, SelectionFilterAPI.ByObjectTypes(new List<ObjectType>() { ObjectType.Block }), msg: msg);
+            List<BlockReference> blocks = new List<BlockReference>();
+            using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                foreach (var id in blockIds)
+                {
+                    var bl = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
+                    string blockName = BlockAPI.GetBlockName(bl);
+                    if (blockNames.Contains(blockName))
+                    {
+                        blocks.Add(bl);
+                    }
+                }
+            }
+            return blocks;
         }
     }
 }

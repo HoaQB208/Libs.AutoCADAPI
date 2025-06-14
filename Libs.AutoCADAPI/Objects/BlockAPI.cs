@@ -1,7 +1,11 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
 {
@@ -322,6 +326,168 @@ namespace Libs.AutoCADAPI.Objects
                 bl.ScaleFactors = new Scale3d(old.X * hs, old.Y * hs, old.Z * hs);
                 tr.Commit();
             }
+        }
+
+        public static HashSet<string> ListBlockNames()
+        {
+            var db = Application.DocumentManager.MdiActiveDocument.Database;
+            HashSet<string> blockNames = new HashSet<string>();
+            using (var tr = db.TransactionManager.StartTransaction())
+            {
+                var bt = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                var ms = (BlockTableRecord)tr.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForRead);
+                foreach (ObjectId id in ms)
+                {
+                    var br = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
+                    if (br == null) continue;
+                    var btr = (BlockTableRecord)tr.GetObject(br.BlockTableRecord, OpenMode.ForRead);
+                    blockNames.Add(btr.Name);
+                }
+            }
+            return blockNames;
+        }
+
+        public static string GetBlockName(BlockReference bl)
+        {
+            if (bl == null) return string.Empty;
+            using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                if (bl.IsDynamicBlock)
+                {
+                    var dynBtr = (BlockTableRecord)tr.GetObject(bl.DynamicBlockTableRecord, OpenMode.ForRead);
+                    return dynBtr.Name;
+                }
+                else
+                {
+                    var btr = (BlockTableRecord)tr.GetObject(bl.BlockTableRecord, OpenMode.ForRead);
+                    return btr.Name;
+                }
+            }
+        }
+
+        public static string GetBlockName(ObjectId id)
+        {
+            using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                var bl = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
+                return GetBlockName(bl);
+            }
+        }
+
+        public static string GetDynamicBlockTagValue(BlockReference bl, string tagName)
+        {
+            using (Transaction tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                DynamicBlockReferencePropertyCollection props = bl.DynamicBlockReferencePropertyCollection;
+                foreach (DynamicBlockReferenceProperty prop in props)
+                {
+                    if (prop.PropertyName.Equals(tagName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return prop.Value.ToString();
+                    }
+                }
+            }
+            return "";
+        }
+
+        public static string GetLookupParameterValue(BlockReference bl, string paraName)
+        {
+            using (Transaction tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                try
+                {
+                    // Lấy COM document
+                    object acadApp = Application.AcadApplication;
+                    object acadDoc = acadApp.GetType().InvokeMember("ActiveDocument", BindingFlags.GetProperty, null, acadApp, null);
+                    // Lấy đối tượng COM qua Handle
+                    string handle = bl.Handle.ToString();
+                    object comBlock = acadDoc.GetType().InvokeMember("HandleToObject", BindingFlags.InvokeMethod, null, acadDoc, new object[] { handle });
+                    // Gọi GetDynamicBlockProperties
+                    object propsObj = comBlock.GetType().InvokeMember("GetDynamicBlockProperties", BindingFlags.InvokeMethod, null, comBlock, null);
+                    // Ép về mảng object
+                    IEnumerable props = propsObj as IEnumerable;
+                    foreach (object prop in props)
+                    {
+                        string name = prop.GetType().InvokeMember("PropertyName", BindingFlags.GetProperty, null, prop, null).ToString();
+                        if (name == paraName)
+                        {
+                            return prop.GetType().InvokeMember("Value", BindingFlags.GetProperty, null, prop, null).ToString();
+                        }
+                    }
+                }
+                catch { }
+            }
+            return "";
+        }
+
+        public static List<object> GetLookupParameterAllowedValues(BlockReference bl, string paraName)
+        {
+            List<object> objs = new List<object>();
+            using (Transaction tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                try
+                {
+                    // Lấy COM document
+                    object acadApp = Application.AcadApplication;
+                    object acadDoc = acadApp.GetType().InvokeMember("ActiveDocument", BindingFlags.GetProperty, null, acadApp, null);
+                    // Lấy đối tượng COM qua Handle
+                    string handle = bl.Handle.ToString();
+                    object comBlock = acadDoc.GetType().InvokeMember("HandleToObject", BindingFlags.InvokeMethod, null, acadDoc, new object[] { handle });
+                    // Gọi GetDynamicBlockProperties
+                    object propsObj = comBlock.GetType().InvokeMember("GetDynamicBlockProperties", BindingFlags.InvokeMethod, null, comBlock, null);
+                    // Ép về mảng object
+                    IEnumerable props = propsObj as IEnumerable;
+                    foreach (object prop in props)
+                    {
+                        string name = prop.GetType().InvokeMember("PropertyName", BindingFlags.GetProperty, null, prop, null).ToString();
+                        if (name == paraName)
+                        {
+                            object allowedValues = prop.GetType().InvokeMember("AllowedValues", BindingFlags.GetProperty, null, prop, null);
+                            if (allowedValues is IEnumerable values)
+                            {
+                                foreach (var val in values)
+                                {
+                                    objs.Add(val);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch {}
+            }
+            return objs;
+        }
+
+        public static bool SetLookupParameterValue(BlockReference bl, string paraName, object newValue)
+        {
+            using (Transaction tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
+            {
+                try
+                {
+                    // Lấy COM document
+                    object acadApp = Application.AcadApplication;
+                    object acadDoc = acadApp.GetType().InvokeMember("ActiveDocument", BindingFlags.GetProperty, null, acadApp, null);
+                    // Lấy đối tượng COM qua Handle
+                    string handle = bl.Handle.ToString();
+                    object comBlock = acadDoc.GetType().InvokeMember("HandleToObject", BindingFlags.InvokeMethod, null, acadDoc, new object[] { handle });
+                    // Gọi GetDynamicBlockProperties
+                    object propsObj = comBlock.GetType().InvokeMember("GetDynamicBlockProperties", BindingFlags.InvokeMethod, null, comBlock, null);
+                    // Ép về mảng object
+                    IEnumerable props = propsObj as IEnumerable;
+                    foreach (object prop in props)
+                    {
+                        string name = prop.GetType().InvokeMember("PropertyName", BindingFlags.GetProperty, null, prop, null).ToString();
+                        if (name == paraName)
+                        {
+                            prop.GetType().InvokeMember("Value", BindingFlags.SetProperty, null, prop, new object[] { newValue });
+                            tr.Commit();
+                            return true;
+                        }
+                    }
+                }
+                catch { }
+            }
+            return false;
         }
 
         void CreateBlockSample(string blockName)
