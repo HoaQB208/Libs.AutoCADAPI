@@ -1,5 +1,6 @@
 \.vs
 \obj
+\bin
 \packages
 *.csproj.user
-/Libs.AutoCADAPI/bin/Libs.AutoCADAPI.bundle/Contents/2023
+

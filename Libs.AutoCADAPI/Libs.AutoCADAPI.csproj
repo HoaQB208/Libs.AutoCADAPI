@@ -10,168 +10,168 @@
   <PropertyGroup Condition="'$(Configuration)' == 'A2007'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2007</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2007\</OutputPath>
+    <OutputPath>bin\2007\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2008'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2008</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2008\</OutputPath>
+    <OutputPath>bin\2008\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2009'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2009</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2009\</OutputPath>
+    <OutputPath>bin\2009\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2010'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2010</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2010\</OutputPath>
+    <OutputPath>bin\2010\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2011'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2011</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2011\</OutputPath>
+    <OutputPath>bin\2011\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2012'">
     <TargetFramework>net35</TargetFramework>
     <DefineConstants>A2012</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2012\</OutputPath>
+    <OutputPath>bin\2012\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2013'">
     <TargetFramework>net40</TargetFramework>
     <DefineConstants>A2013</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2013\</OutputPath>
+    <OutputPath>bin\2013\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2014'">
     <TargetFramework>net40</TargetFramework>
     <DefineConstants>A2014</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2014\</OutputPath>
+    <OutputPath>bin\2014\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2015'">
     <TargetFramework>net45</TargetFramework>
     <DefineConstants>A2015</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2015\</OutputPath>
+    <OutputPath>bin\2015\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2016'">
     <TargetFramework>net45</TargetFramework>
     <DefineConstants>A2016</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2016\</OutputPath>
+    <OutputPath>bin\2016\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2017'">
     <TargetFramework>net46</TargetFramework>
     <DefineConstants>A2017</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2017\</OutputPath>
+    <OutputPath>bin\2017\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2018'">
     <TargetFramework>net46</TargetFramework>
     <DefineConstants>A2018</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2018\</OutputPath>
+    <OutputPath>bin\2018\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2019'">
     <TargetFramework>net47</TargetFramework>
     <DefineConstants>A2019</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2019\</OutputPath>
+    <OutputPath>bin\2019\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2020'">
     <TargetFramework>net472</TargetFramework>
     <DefineConstants>A2020</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2020\</OutputPath>
+    <OutputPath>bin\2020\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2021'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2021</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2021\</OutputPath>
+    <OutputPath>bin\2021\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2022'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2022</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2022\</OutputPath>
+    <OutputPath>bin\2022\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2023'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2023</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2023\</OutputPath>
+    <OutputPath>bin\2023\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2024'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2024</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2024\</OutputPath>
+    <OutputPath>bin\2024\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2025'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2025</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2025\</OutputPath>
+    <OutputPath>bin\2025\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2026'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2026</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2026\</OutputPath>
+    <OutputPath>bin\2026\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2027'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2027</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2027\</OutputPath>
+    <OutputPath>bin\2027\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2028'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2028</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2028\</OutputPath>
+    <OutputPath>bin\2028\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2029'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2029</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2029\</OutputPath>
+    <OutputPath>bin\2029\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2030'">
     <TargetFramework>net48</TargetFramework>
     <DefineConstants>A2030</DefineConstants>
-    <OutputPath>bin\Libs.AutoCADAPI.bundle\Contents\2030\</OutputPath>
+    <OutputPath>bin\2030\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 

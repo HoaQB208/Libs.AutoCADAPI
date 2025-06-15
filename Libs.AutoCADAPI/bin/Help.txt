@@ -1,1 +1,0 @@
-Run the 'Installer.bat' file to copy the 'Libs.AutoCADAPI.bundle' folder to C:\ProgramData\Autodesk\ApplicationPlugins\
