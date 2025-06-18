@@ -391,11 +391,11 @@ namespace Libs.AutoCADAPI.Objects
             }
         }
 
-        public static string GetBlockName(ObjectId id)
+        public static string GetBlockName(ObjectId id, out BlockReference bl)
         {
             using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
             {
-                var bl = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
+                bl = tr.GetObject(id, OpenMode.ForRead) as BlockReference;
                 return GetBlockName(bl);
             }
         }
