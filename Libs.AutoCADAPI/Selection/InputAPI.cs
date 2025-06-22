@@ -5,9 +5,13 @@ namespace Libs.AutoCADAPI.Selection
 {
     public class InputAPI
     {
-        public static string GetString(string msg = "Nhập vào chuỗi")
+        public static string GetString(string msg = "Nhập vào chuỗi", string defaultValue = "", bool allowSpaces = true)
         {
-            PromptResult result = Application.DocumentManager.MdiActiveDocument.Editor.GetString(new PromptStringOptions("\n" + msg));
+            PromptResult result = Application.DocumentManager.MdiActiveDocument.Editor.GetString(new PromptStringOptions("\n" + msg)
+            {
+                DefaultValue = defaultValue,
+                AllowSpaces = allowSpaces
+            });
             if (result.Status != PromptStatus.OK) return null;
             return result.StringResult;
         }
