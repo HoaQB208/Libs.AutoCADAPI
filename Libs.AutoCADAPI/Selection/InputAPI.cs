@@ -1,5 +1,6 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Selection
 {

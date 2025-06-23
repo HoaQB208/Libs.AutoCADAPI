@@ -1,6 +1,7 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
 {
@@ -80,7 +81,7 @@ namespace Libs.AutoCADAPI.Objects
                     acDimStyleTblRec.Dimtxsty = acTextStyleTable1[dimStyleSetting.nameTextStyle];
                     acDimStyleTblRec.Dimtxt = dimStyleSetting.TextHeight;  // Text heigh //Chiều cao text: 0.15
                     acDimStyleTblRec.Dimtfac = 1;    // Fraction heigh scale: 1
-                    acDimStyleTblRec.Dimclrt = Color.FromColorIndex(ColorMethod.ByAci, dimStyleSetting.colorText);   // Màu cho text: 7
+                    acDimStyleTblRec.Dimclrt = Autodesk.AutoCAD.Colors.Color.FromColorIndex(ColorMethod.ByAci, dimStyleSetting.colorText);   // Màu cho text: 7
                     acDimStyleTblRec.Dimtad = 1; // Bằng 0: text nằm dọc, giữa đường Dim: 1
                     acDimStyleTblRec.Dimgap = dimStyleSetting.OffsetFromDimLine;   // Offset from dim line: 0.085
                     acDimStyleTblRec.Dimfrac = 0;

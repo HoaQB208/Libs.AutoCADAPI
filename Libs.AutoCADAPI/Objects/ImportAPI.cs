@@ -1,6 +1,7 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using System.Collections.Generic;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
 {

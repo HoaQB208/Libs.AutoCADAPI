@@ -2,6 +2,7 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using System.Collections.Generic;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
 {

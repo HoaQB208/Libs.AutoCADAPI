@@ -46,7 +46,7 @@ namespace Libs.AutoCADAPI.Objects
             RibbonButton bt = new RibbonButton()
             {
                 Text = text,
-                Orientation = Orientation.Vertical,
+                Orientation = System.Windows.Controls.Orientation.Vertical,
                 ShowText = true,
                 Size = RibbonItemSize.Large,
                 Image = img,
@@ -65,7 +65,7 @@ namespace Libs.AutoCADAPI.Objects
             RibbonButton bt = new RibbonButton()
             {
                 Text = text,
-                Orientation = Orientation.Horizontal,
+                Orientation = System.Windows.Controls.Orientation.Horizontal,
                 ShowText = true,
                 Size = RibbonItemSize.Standard,
                 Image = img,

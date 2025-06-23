@@ -5,6 +5,7 @@ using Autodesk.AutoCAD.Geometry;
 using Libs.AutoCADAPI.Objects;
 using System;
 using System.Collections.Generic;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Selection
 {

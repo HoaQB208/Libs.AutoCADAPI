@@ -2,6 +2,7 @@
 using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
 using System.Collections.Generic;
+using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
 {
@@ -20,7 +21,7 @@ namespace Libs.AutoCADAPI.Objects
                     LayerTableRecord rec = new LayerTableRecord
                     {
                         Name = layerName,
-                        Color = Color.FromColorIndex(ColorMethod.ByAci, color),
+                        Color = Autodesk.AutoCAD.Colors.Color.FromColorIndex(ColorMethod.ByAci, color),
                         LinetypeObjectId = LineTypeAPI.GetLineTypeId(lineTypeName),
                         LineWeight = lineWeight,
                         IsPlottable = canPrint,
