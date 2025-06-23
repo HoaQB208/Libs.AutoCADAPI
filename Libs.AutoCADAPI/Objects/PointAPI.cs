@@ -202,7 +202,7 @@ namespace Libs.AutoCADAPI.Objects
             return p1.DistanceTo(p2) < tolera;
         }
 
-        public static (Point3d, Point3d) GetRange(List<Point3d> pts, double offset = 0)
+        public static void GetRange(List<Point3d> pts, out Point3d topLeft, out Point3d bottomRight, double offset = 0)
         {
             double minX = double.MaxValue;
             double maxX = double.MinValue;
@@ -215,9 +215,8 @@ namespace Libs.AutoCADAPI.Objects
                 if (p.Y < minY) minY = p.Y;
                 if (p.Y > maxY) maxY = p.Y;
             }
-            Point3d topLeft = new Point3d(minX - offset, maxY + offset, 0);      // Góc trên bên trái
-            Point3d bottomRight = new Point3d(maxX + offset, minY - offset, 0);  // Góc dưới bên phải
-            return (topLeft, bottomRight);
+            topLeft = new Point3d(minX - offset, maxY + offset, 0);      // Góc trên bên trái
+            bottomRight = new Point3d(maxX + offset, minY - offset, 0);  // Góc dưới bên phải
         }
     }
 }

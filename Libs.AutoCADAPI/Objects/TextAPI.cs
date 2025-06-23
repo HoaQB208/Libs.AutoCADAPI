@@ -7,9 +7,9 @@ namespace Libs.AutoCADAPI.Objects
 {
     public class TextAPI
     {
-        public static (ObjectId, string) CreateDText(string text, Point3d position, double heigh, string textStyle = "", int color = 256, TextHorizontalMode horizontal = TextHorizontalMode.TextLeft, double rotation = 0, string layerName = null)
+        public static ObjectId CreateDText(string text, Point3d position, double heigh, out string strHand, string textStyle = "", int color = 256, TextHorizontalMode horizontal = TextHorizontalMode.TextLeft, double rotation = 0, string layerName = null)
         {
-            string strHand = "";
+            strHand = "";
             ObjectId id = ObjectId.Null;
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
@@ -36,7 +36,7 @@ namespace Libs.AutoCADAPI.Objects
                 id = dbtext.Id;
                 strHand = dbtext.Handle.ToString();
             }
-            return (id, strHand);
+            return id;
         }
 
         public static string CreateMText(string content, Point3d position, double textHeight, string textStyle = "", string layer = null, int color = 256, double rotation = 0, AttachmentPoint attachment = AttachmentPoint.TopLeft)

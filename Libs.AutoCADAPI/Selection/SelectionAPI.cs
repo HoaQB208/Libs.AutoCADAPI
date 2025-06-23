@@ -177,9 +177,9 @@ namespace Libs.AutoCADAPI.Selection
             return blocks;
         }
 
-        public static List<BlockReference> GetBlockRefByNameAndCrossingWindow(List<string> blockNames, (Point3d TopLeft, Point3d BottomRight) range)
+        public static List<BlockReference> GetBlockRefByNameAndCrossingWindow(List<string> blockNames, Point3d topLeft, Point3d bottomRight)
         {
-            var blockIds = ObjectIds(SelectionType.CrossingWindow, pWindow1: range.TopLeft, pWindow2: range.BottomRight, filter: SelectionFilterAPI.ByObjectTypes(new List<ObjectType>() { ObjectType.Block }));
+            var blockIds = ObjectIds(SelectionType.CrossingWindow, pWindow1: topLeft, pWindow2: bottomRight, filter: SelectionFilterAPI.ByObjectTypes(new List<ObjectType>() { ObjectType.Block }));
             List<BlockReference> blocks = new List<BlockReference>();
             using (var tr = Application.DocumentManager.MdiActiveDocument.Database.TransactionManager.StartTransaction())
             {

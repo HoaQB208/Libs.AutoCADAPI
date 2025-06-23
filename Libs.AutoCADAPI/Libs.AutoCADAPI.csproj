@@ -78,14 +78,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2017'">
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <DefineConstants>A2017</DefineConstants>
     <OutputPath>bin\2017\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'A2018'">
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <DefineConstants>A2018</DefineConstants>
     <OutputPath>bin\2018\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
