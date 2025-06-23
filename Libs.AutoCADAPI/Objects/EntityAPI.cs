@@ -235,5 +235,16 @@ namespace Libs.AutoCADAPI.Objects
             }
             return idReturn;
         }
+
+        public static List<ObjectId> Copys(List<ObjectId> originIds, Vector3d? displacement = null)
+        {
+            List<ObjectId> ids = new List<ObjectId>();
+            foreach (ObjectId originId in originIds)
+            {
+                ObjectId newId = Copy(originId, displacement);
+                if(newId != ObjectId.Null) ids.Add(newId);
+            }
+            return ids;
+        }
     }
 }

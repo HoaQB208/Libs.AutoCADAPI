@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace Libs.AutoCADAPI.Objects
 {
-    public class RibbonAPI
+    public static class RibbonAPI
     {
         public static RibbonTab CreateRibbonTab(string appName)
         {
@@ -25,7 +25,7 @@ namespace Libs.AutoCADAPI.Objects
             return ribbon;
         }
 
-        public static RibbonPanelSource CreateGroup(RibbonTab ribbon, string title)
+        public static RibbonPanelSource CreateGroup(this RibbonTab ribbon, string title)
         {
             RibbonPanelSource ribbonPanelSource = new RibbonPanelSource() { Title = title };
             RibbonPanel ribbonPanel = new RibbonPanel() { Source = ribbonPanelSource };
@@ -33,16 +33,16 @@ namespace Libs.AutoCADAPI.Objects
             return ribbonPanelSource;
         }
 
-        public static RibbonRowPanel CreateColumn(RibbonPanelSource group)
+        public static RibbonRowPanel CreateColumn(this RibbonPanelSource group)
         {
             RibbonRowPanel column = new RibbonRowPanel();
             group.Items.Add(column);
             return column;
         }
 
-        public static void AddBigButton(RibbonPanelSource group, string text, string cmd, Bitmap bitmap, string description = "", bool isEnabled = true)
+        public static void AddBigButton(this RibbonPanelSource group, string text, string cmd, byte[] imgBytes, string description = "", bool isEnabled = true)
         {
-            BitmapImage img = GetBitmap(bitmap, 32, 32);
+            BitmapImage img = ByteArrayToBitmapImage(imgBytes, 32, 32);
             RibbonButton bt = new RibbonButton()
             {
                 Text = text,
@@ -59,7 +59,7 @@ namespace Libs.AutoCADAPI.Objects
             group.Items.Add(bt);
         }
 
-        public static void AddSmallButton(RibbonRowPanel column, string text, string cmd, Bitmap bitmap, string description = "", bool isEnabled = true)
+        public static void AddSmallButton(this RibbonRowPanel column, string text, string cmd, Bitmap bitmap, string description = "", bool isEnabled = true)
         {
             BitmapImage img = GetBitmap(bitmap, 16, 16);
             RibbonButton bt = new RibbonButton()
@@ -79,7 +79,7 @@ namespace Libs.AutoCADAPI.Objects
             column.Items.Add(new RibbonRowBreak());
         }
 
-        public static void AddSmallCheckBox(RibbonRowPanel column, string text, string cmd, string description = "")
+        public static void AddSmallCheckBox(this RibbonRowPanel column, string text, string cmd, string description = "")
         {
             RibbonCheckBox bt = new RibbonCheckBox()
             {
@@ -95,6 +95,12 @@ namespace Libs.AutoCADAPI.Objects
             column.Items.Add(bt);
             column.Items.Add(new RibbonRowBreak());
         }
+
+        public static void AddSeparator(this RibbonPanelSource group)
+        {
+            group.Items.Add(new RibbonSeparator());
+        }
+
 
         class CmdHandler : System.Windows.Input.ICommand
         {
@@ -121,6 +127,25 @@ namespace Libs.AutoCADAPI.Objects
             bmp.DecodePixelWidth = width;
             bmp.EndInit();
             return bmp;
+        }
+
+        public static BitmapImage ByteArrayToBitmapImage(byte[] imageData, int height, int width)
+        {
+            if (imageData == null || imageData.Length == 0)
+                return null;
+
+            using (var ms = new MemoryStream(imageData))
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = ms;
+                bitmap.DecodePixelHeight = height;
+                bitmap.DecodePixelWidth = width;
+                bitmap.EndInit();
+                bitmap.Freeze();
+                return bitmap;
+            }
         }
 
         public static FlowDocument CreateListCmdForHelp(RibbonTab ribbon)
