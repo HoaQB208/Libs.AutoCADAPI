@@ -1,6 +1,7 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
+using System.Collections.Generic;
 using Application = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Libs.AutoCADAPI.Objects
@@ -109,5 +110,20 @@ namespace Libs.AutoCADAPI.Objects
             }
         }
 
+        public static List<string> GetDimStyles()
+        {
+            List<string> dimStyles = new List<string>();
+            Database db = Application.DocumentManager.MdiActiveDocument.Database;
+            using (Transaction trans = db.TransactionManager.StartTransaction())
+            {
+                DimStyleTable dimStyleTable = trans.GetObject(db.DimStyleTableId, OpenMode.ForRead) as DimStyleTable;
+                foreach (ObjectId dimStyleId in dimStyleTable)
+                {
+                    var dimStyle = trans.GetObject(dimStyleId, OpenMode.ForRead) as DimStyleTableRecord;
+                    if (dimStyle != null) dimStyles.Add(dimStyle.Name);
+                }
+            }
+            return dimStyles;
+        }
     }
 }

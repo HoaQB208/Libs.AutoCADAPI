@@ -1,5 +1,6 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.Windows;
+using Libs.AutoCADAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -151,40 +152,41 @@ namespace Libs.AutoCADAPI.Objects
         public static FlowDocument CreateListCmdForHelp(RibbonTab ribbon)
         {
             FlowDocument doc = new FlowDocument();
-            Paragraph paragraph = new Paragraph();
-
-            foreach (RibbonPanel panel in ribbon.Panels)
+            if (ribbon != null)
             {
-                Bold groupName = new Bold(new Run("* " + panel.Source.Title))
+                Paragraph paragraph = new Paragraph();
+                // Group
+                foreach (RibbonPanel panel in ribbon.Panels)
                 {
-                    Foreground = System.Windows.Media.Brushes.OrangeRed
-                };
-                paragraph.Inlines.Add(groupName);
-
-                foreach (RibbonItem item in panel.Source.Items)
-                {
-                    List<RibbonCommandItem> commandItems = GetRibbonCommandItems(item);
-                    foreach (RibbonCommandItem cmd in commandItems)
+                    // Group Name
+                    Bold groupName = new Bold(new Run("\n* " + StringUtils.RemoveLines(panel.Source.Title)))
                     {
-                        if (cmd != null)
+                        Foreground = System.Windows.Media.Brushes.Orange
+                    };
+                    paragraph.Inlines.Add(groupName);
+
+                    foreach (RibbonItem item in panel.Source.Items)
+                    {
+                        List<RibbonCommandItem> commandItems = GetRibbonCommandItems(item);
+                        foreach (RibbonCommandItem cmd in commandItems)
                         {
-                            paragraph.Inlines.Add("\n    ");
-
-                            Run command = new Run(cmd.CommandParameter.ToString())
+                            // Từng lệnh
+                            if (cmd != null)
                             {
-                                FontWeight = FontWeights.Bold
-                            };
-                            paragraph.Inlines.Add(command);
-
-                            paragraph.Inlines.Add($" : {cmd.Text}\n        {cmd.Description}");
+                                // CMD lệnh + Text hiển thị
+                                paragraph.Inlines.Add("\n\n    ");
+                                Run command = new Run(StringUtils.RemoveLines(cmd.CommandParameter.ToString())) { FontWeight = FontWeights.Bold };
+                                paragraph.Inlines.Add(command);
+                                paragraph.Inlines.Add($" : {StringUtils.RemoveLines(cmd.Text)}");
+                                // Miêu tả chi tiết
+                                paragraph.Inlines.Add($"\n        {cmd.Description.Replace("\n", "\n        ")}");
+                            }
                         }
                     }
+                    paragraph.Inlines.Add(new Run("\n\n"));
                 }
-
-                paragraph.Inlines.Add(new Run("\n\n"));
+                doc.Blocks.Add(paragraph);
             }
-
-            doc.Blocks.Add(paragraph);
             return doc;
         }
         private static List<RibbonCommandItem> GetRibbonCommandItems(RibbonItem ribbonItem)
