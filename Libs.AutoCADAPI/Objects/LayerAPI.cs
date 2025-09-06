@@ -81,9 +81,9 @@ namespace Libs.AutoCADAPI.Objects
             catch { }
         }
 
-        public static List<string> GetAllLayerNames()
+        public static HashSet<string> GetAllLayerNames()
         {
-            List<string> layerNames = new List<string>();
+            HashSet<string> layerNames = new HashSet<string>();
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
             using (doc.LockDocument())

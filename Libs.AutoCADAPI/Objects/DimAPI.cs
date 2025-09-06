@@ -8,6 +8,11 @@ namespace Libs.AutoCADAPI.Objects
 {
     public class DimAPI
     {
+        public static void DimX(Point2d startDim, Point2d endDim, double offset, string textDim = null)
+        {
+            DimX(new Point3d(startDim.X, startDim.Y, 0), new Point3d(endDim.X, endDim.Y, 0), offset, textDim);
+        }
+
         public static void DimX(Point3d startDim, Point3d endDim, double offset, string textDim = null)
         {
             if (startDim.X == endDim.X) return;
@@ -33,6 +38,11 @@ namespace Libs.AutoCADAPI.Objects
                 tr.AddNewlyCreatedDBObject(dim, true);
                 tr.Commit();
             }
+        }
+
+        public static void DimY(Point2d startDim, Point2d endDim, double offset, string textDim = null)
+        {
+            DimY(new Point3d(startDim.X, startDim.Y, 0), new Point3d(endDim.X, endDim.Y, 0), offset, textDim);
         }
 
         public static void DimY(Point3d startDim, Point3d endDim, double offset, string textDim = null)
@@ -91,6 +101,43 @@ namespace Libs.AutoCADAPI.Objects
                 }
             }
             return stHandle;
+        }
+
+        /// <summary>
+        /// Dim phương X nhưng ghi kích thước đứng, dùng cho dim lý trình
+        /// </summary>
+        /// <param name="startDim"></param>
+        /// <param name="endDim"></param>
+        /// <param name="offset"></param>
+        /// <param name="textDim"></param>
+        public static void DimOrdinate(Point3d origin, Point3d curPoint, double offset, string textDim = null, double textXOffset = 0)
+        {
+            if(textDim == null) textDim = curPoint.DistanceTo(origin).ToString("0");
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            using (doc.LockDocument())
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                BlockTableRecord rec = tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite) as BlockTableRecord;
+                // Điểm leader: đặt lệch qua bên phải, phía trên điểm đang đo
+                Point3d leaderPoint = new Point3d(curPoint.X + textXOffset, curPoint.Y + offset, 0);
+                // Tạo OrdinateDimension
+                OrdinateDimension dim = new OrdinateDimension(
+                    true,           // đo tọa độ X
+                    curPoint,  // điểm cần đo
+                    leaderPoint,    // điểm leader để đặt text
+                    textDim,  // text hiển thị
+                    db.Dimstyle
+                );
+                dim.Origin = origin;
+                // Đặt text quay dọc
+                dim.TextRotation = Math.PI / 2;
+
+                dim.SetDatabaseDefaults();
+                rec.AppendEntity(dim);
+                tr.AddNewlyCreatedDBObject(dim, true);
+                tr.Commit();
+            }
         }
     }
 }

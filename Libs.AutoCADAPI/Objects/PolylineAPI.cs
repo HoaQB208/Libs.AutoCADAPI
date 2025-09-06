@@ -10,7 +10,7 @@ namespace Libs.AutoCADAPI.Objects
 {
     public class PolylineAPI
     {
-        public static ObjectId Create(List<Point3d> points, out string handle, bool isClosed = true, double elevation = 0, string layer = "", double? width = null)
+        public static ObjectId Create(List<Point3d> points, out string handle, bool isClosed = true, double elevation = 0, string layer = "", double? width = null, int colorIndex = 256)
         {
             ObjectId id = ObjectId.Null;
             handle = "";
@@ -31,6 +31,7 @@ namespace Libs.AutoCADAPI.Objects
                 }
                 pline.Closed = isClosed;
                 pline.Elevation = elevation;
+                pline.ColorIndex = colorIndex;
                 try { if (layer != "") pline.Layer = layer; } catch { }
                 rec.AppendEntity(pline);
                 tr.AddNewlyCreatedDBObject(pline, true);
@@ -116,6 +117,21 @@ namespace Libs.AutoCADAPI.Objects
             double maxY = lsY.Max();
             double minY = lsY.Min();
             return maxY - minY;
+        }
+
+        public static double GetBulge(Point2d p1, Point2d p2, Point2d c1)
+        {
+            // Vector từ tâm đến p1, p2
+            Vector2d v1 = p1 - c1;
+            Vector2d v2 = p2 - c1;
+            // Góc ở tâm
+            double angle = v1.GetAngleTo(v2);
+            // Xác định chiều quay
+            double cross = v1.X * v2.Y - v1.Y * v2.X;
+            // Bulge
+            double bulge = Math.Tan(angle / 4.0);
+            if (cross < 0) bulge = -bulge;
+            return bulge;
         }
 
         public static double Distance(Polyline pline, Point3d point, bool extend = false)
