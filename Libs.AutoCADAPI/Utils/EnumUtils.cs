@@ -29,11 +29,20 @@ namespace Libs.AutoCADAPI.Utils
             return descs;
         }
 
+        public static IEnumerable<T> GetValues<T>() where T : Enum
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        public static T GetByName<T>(string name) where T : struct, Enum
+        {
+            if (Enum.TryParse<T>(name, out var value)) return value;
+            return Enum.GetValues(typeof(T)).Cast<T>().FirstOrDefault();
+        }
+
+
         // Ví dụ lấy danh sách Enum dùng để Binding
         //public ObservableCollection<MyEnum> EnumValues { get; } = new ObservableCollection<MyEnum>(Enum.GetValues(typeof(MyEnum)).Cast<MyEnum>());
-
-
-
 
 
         public static IEnumerable<EnumWithDescription> GetEnumWithDescriptions<T>() where T : struct

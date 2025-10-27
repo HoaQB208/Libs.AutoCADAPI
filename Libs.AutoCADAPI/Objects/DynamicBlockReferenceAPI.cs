@@ -4,13 +4,14 @@ using Autodesk.AutoCAD.Geometry;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Libs.AutoCADAPI.Objects
 {
     public class DynamicBlockReferenceAPI
     {
-        public static void Insert(string blockName, Point3d ptInsert, Dictionary<string, object> properties, double scale = 1)
+        public static void Insert(string blockName, Point3d ptInsert, Dictionary<string, object> properties, double scale = 1, double rotate = 0)
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
@@ -23,23 +24,42 @@ namespace Libs.AutoCADAPI.Objects
                 using (BlockReference bl = new BlockReference(ptInsert, recSource.Id))
                 {
                     bl.ScaleFactors = new Scale3d(scale);
+                    bl.Rotation = rotate;
                     BlockTableRecord rec = tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite) as BlockTableRecord;
                     rec.AppendEntity(bl);
                     tr.AddNewlyCreatedDBObject(bl, true);
 
                     foreach (DynamicBlockReferenceProperty property in bl.DynamicBlockReferencePropertyCollection)
                     {
-                        if (properties.ContainsKey(property.PropertyName))
+                        if (!properties.ContainsKey(property.PropertyName)) continue;
+
+                        object val = properties[property.PropertyName];
+                        if (property.PropertyTypeCode == 3)
+                        {
+                            var allowedValues = property.GetAllowedValues();
+                            if (allowedValues != null && allowedValues.Count() > 0)
+                            {
+                                var match = allowedValues.Cast<object>().FirstOrDefault(v => string.Equals(v.ToString().Trim(), val.ToString().Trim(), StringComparison.OrdinalIgnoreCase));
+                                if (match != null) property.Value = match;
+                            }
+                        }
+                        else
                         {
                             if (property.Value is double)
                             {
-                                property.Value = (double)properties[property.PropertyName];
+                                if (double.TryParse(val?.ToString(), out double numb))
+                                {
+                                    property.Value = numb;
+                                }
                             }
                             else if (property.Value is int)
                             {
-                                property.Value = (int)properties[property.PropertyName];
+                                if (int.TryParse(val?.ToString(), out int numb))
+                                {
+                                    property.Value = numb;
+                                }
                             }
-                            else property.Value = properties[property.PropertyName];
+                            else property.Value = val;
                         }
                     }
                     bl.RecordGraphicsModified(true);
